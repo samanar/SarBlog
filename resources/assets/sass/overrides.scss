@@ -1,0 +1,21 @@
+
+.uk-logo {
+     img {
+          height: 60px !important;
+     }
+}
+
+.uk-offcanvas-bar {
+     background-color: white;
+     color: black;
+
+     a,
+     li,
+     ul {
+          color: grey !important;
+     }
+
+     .uk-nav-divider {
+          border: 1px solid lightgrey;
+     }
+}
