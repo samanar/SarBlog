@@ -4,7 +4,7 @@
     <div class="uk-section">
         <div class="uk-container uk-container-center">
 
-            <div class="uk-width-1-2@m uk-align-center">
+            <div class="uk-width-1-2@m uk-align-center register_form">
 
                 <div class="uk-padding uk-box-shadow-large">
 

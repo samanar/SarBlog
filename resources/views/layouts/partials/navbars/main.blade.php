@@ -19,8 +19,16 @@
                  uk-toggle="target: #offcanvas-nav-default">
             </div>
             <div class="uk-navbar-nav">
-                <li class="uk-visible@s"><a href="{{ route('login') }}" class="uk-navbar-item">Login</a></li>
-                <li class="uk-visible@s"><a href="{{ route('register') }}" class="uk-navbar-item">Register</a></li>
+                <li class="uk-visible@s"><a href="{{ route('login') }}" class="uk-navbar-item">
+                        Login
+                        &nbsp;
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                    </a></li>
+                <li class="uk-visible@s"><a href="{{ route('register') }}" class="uk-navbar-item">
+                        Register
+                        &nbsp;
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a></li>
             </div>
         </div>
     @endguest
@@ -29,16 +37,34 @@
             <div class="uk-hidden@s uk-navbar-toggle" uk-navbar-toggle-icon type="button"
                  uk-toggle="target: #offcanvas-nav-default">
             </div>
-            <ul class="uk-navbar-nav uk-visible@s">
+            <ul class="uk-navbar-nav uk-visible@s m-r-15">
                 <li>
                     <a href="#">{{ Auth::user()->name }}</a>
                     <div uk-dropdown>
                         <ul class="uk-nav uk-dropdown-nav">
-                            <li class="uk-text-center">
-                                <a href="">profile</a>
+                            <li >
+                                <a href="">
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    profile
+                                </a>
                             </li>
-                            <li class="uk-text-center">
-                                <a href="" class="logout">Logout</a>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                    Notifications
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route("manage.index") }}">
+                                    <i class="fa fa-cog" aria-hidden="true"></i>
+                                    Manage
+                                </a>
+                            <li class="uk-nav-divider"></li>
+                            <li >
+                                <a href="" class="logout">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    Logout
+                                </a>
                             </li>
                         </ul>
                     </div>

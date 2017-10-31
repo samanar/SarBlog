@@ -7,7 +7,6 @@
 
 try {
     window.$ = window.jQuery = require('jquery');
-    window.UIkit = require("uikit");
 
 } catch (e) {}
 

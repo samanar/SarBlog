@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }} Management</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/uikit.min.css') }}" rel="stylesheet">
@@ -17,8 +17,8 @@
     @stack('stylesheets')
 </head>
 <body>
-
 @include('layouts.partials.navbars.main')
+@include('layouts.partials.navbars.manage')
 @yield('content')
 
 <!-- Scripts -->
@@ -26,6 +26,7 @@
 <script src="{{ asset('js/uikit_icons.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 @stack('javascripts')
+
 
 </body>
 </html>
