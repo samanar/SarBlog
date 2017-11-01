@@ -18,9 +18,12 @@
 </head>
 <body>
 @include('layouts.partials.navbars.main')
-@include('layouts.partials.navbars.manage')
-@yield('content')
-
+<div class=" uk-child-width-expand\@s m-l-10 m-r-10" uk-grid>
+    @include('layouts.partials.navbars.manage')
+    <div class="uk-width-expand@s uk-card uk-card-default m-l-20 m-r-20 p-t-15">
+        @yield('content')
+    </div>
+</div>
 <!-- Scripts -->
 <script src="{{ asset('js/uikit.min.js') }}"></script>
 <script src="{{ asset('js/uikit_icons.min.js') }}"></script>

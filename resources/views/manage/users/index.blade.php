@@ -1,7 +1,5 @@
 @extends('layouts.manage')
 
-@section("users_class" , "uk-active")
-
 @section('content')
-
+    <h2><i class="fa fa-gears" aria-hidden="true"></i> Manage Users</h2>
 @endsection
