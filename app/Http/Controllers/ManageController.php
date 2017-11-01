@@ -13,6 +13,6 @@ class ManageController extends Controller
 
     public function dashboard()
     {
-        return view('manage.dashboard');
+        return view('manage.dashboard')->withClass("dashboard");
     }
 }
