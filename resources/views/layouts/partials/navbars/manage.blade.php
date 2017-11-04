@@ -1,4 +1,4 @@
-<div class="uk-card uk-card-default uk-card-body uk-width-1-5@s side_bar">
+<div class="uk-card uk-card-default uk-card-body uk-width-1-5@s side_bar ">
     <ul class="uk-nav uk-nav-default uk-nav-parent-icon"
         uk-nav="multiple: true; targets : .uk-parent;collapsible : false">
         <li

@@ -111,7 +111,7 @@
     <input type="submit" name="submit" value="submit" id="logout_form_submit">
 </form>
 
-@push('javascripts')
+@push('scripts')
     <script>
         $('document').ready(function () {
             $(".logout").click(function (event) {

@@ -1,5 +1,5 @@
 
-.uk-logo  {
+.uk-logo {
   img {
     height: 60px !important;
   }
@@ -22,4 +22,10 @@
 
 .uk-navbar-container {
   background-color: white;
+}
+
+.uk-table {
+  th {
+    //text-align: center !important;
+  }
 }
