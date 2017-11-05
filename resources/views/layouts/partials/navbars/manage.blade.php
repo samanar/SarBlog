@@ -38,7 +38,7 @@
                             @if(isset($class) && $class == "rules")
                             style="color : black;"
                             @endif
-                            href="#">
+                            href="{{ route("permissions.index") }}">
                         <i class="fa fa-shield" aria-hidden="true"></i>
                         Rules &amp; Permissions
                     </a>

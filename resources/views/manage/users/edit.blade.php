@@ -11,7 +11,7 @@
                     Create New User
                 </h3>
 
-                <form class="uk-form-stacked" role="form" method="POST"
+                <form class="uk-form-stacked uk-width-5-6@s" role="form" method="POST"
                       action="{{ route('users.update' , $user->id) }}">
                     {{ method_field("PUT") }}
                     {{ csrf_field() }}

@@ -2,76 +2,76 @@
 
 @section ('content')
     <div id="app">
-        <div class="uk-container uk-container-center m-t-10">
 
-            <div class="uk-width-1-1@s uk-align-center register_form">
+        <div class="uk-width-1-1@s uk-align-center register_form">
 
-                <h3>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    Create New User
-                </h3>
+            <h2>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Create New User
+            </h2>
 
-                <form class="uk-form-stacked" role="form" method="POST" action="{{ route('users.store') }}">
+            <form class="uk-form-stacked uk-width-5-6@s" role="form" method="POST" action="{{ route('users.store') }}">
 
-                    {{ csrf_field() }}
+                {{ csrf_field() }}
 
-                    <div>
-                        <label class="uk-form-label">Name</label>
-                        <input id="name" type="text"
-                               class="uk-input{{ $errors->has('name') ? ' uk-form-danger' : '' }}" name="name"
-                               value="{{ old('name') }}" required autofocus>
+                <div>
+                    <label class="uk-form-label">Name</label>
+                    <input id="name" type="text"
+                           class="uk-input{{ $errors->has('name') ? ' uk-form-danger' : '' }}" name="name"
+                           value="{{ old('name') }}" required autofocus>
 
-                        @if ($errors->has('name'))
-                            <div class="uk-alert-danger" uk-alert>
-                                {{ $errors->first('name') }}
-                            </div>
-                        @endif
-                    </div>
+                    @if ($errors->has('name'))
+                        <div class="uk-alert-danger" uk-alert>
+                            {{ $errors->first('name') }}
+                        </div>
+                    @endif
+                </div>
 
-                    <div class="uk-margin">
-                        <label class="uk-form-label">Email Address</label>
-                        <input id="email" type="email"
-                               class="uk-input{{ $errors->has('email') ? ' uk-form-danger' : '' }}" name="email"
-                               value="{{ old('email') }}"
-                               v-model="email"
-                               required>
+                <div class="uk-margin">
+                    <label class="uk-form-label">Email Address</label>
+                    <input id="email" type="email"
+                           class="uk-input{{ $errors->has('email') ? ' uk-form-danger' : '' }}" name="email"
+                           value="{{ old('email') }}"
+                           v-model="email"
+                           required>
 
-                        @if ($errors->has('email'))
-                            <div class="uk-alert-danger" uk-alert>
-                                {{ $errors->first('email') }}
-                            </div>
-                        @endif
-                    </div>
+                    @if ($errors->has('email'))
+                        <div class="uk-alert-danger" uk-alert>
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
+                </div>
 
-                    <div class="uk-margin">
-                        <label class="uk-form-label">Password</label>
-                        <input type="text" name="password" id="password"
-                               v-model="password"
-                               class="uk-input{{ $errors->has('password') ? ' uk-form-danger' : '' }}"
-                               required>
+                <div class="uk-margin">
+                    <label class="uk-form-label">Password</label>
+                    <input type="text" name="password" id="password"
+                           v-model="password"
+                           class="uk-input{{ $errors->has('password') ? ' uk-form-danger' : '' }}"
+                           required>
 
-                        @if ($errors->has('password'))
-                            <div class="uk-alert-danger" uk-alert>
-                                {{ $errors->first('password') }}
-                            </div>
-                        @endif
-                    </div>
+                    @if ($errors->has('password'))
+                        <div class="uk-alert-danger" uk-alert>
+                            {{ $errors->first('password') }}
+                        </div>
+                    @endif
+                </div>
 
-                    <div class="uk-margin">
-                        <input class="uk-checkbox" type="checkbox" name="auto_generate"
-                               v-model="auto_password">
-                        Auto generate password ?
-                    </div>
+                <div class="uk-margin">
+                    <input class="uk-checkbox" type="checkbox" name="auto_generate"
+                           v-model="auto_password">
+                    Auto generate password ?
+                </div>
 
-                    <div class="uk-margin">
-                        <button class="uk-button uk-button-primary" type="submit" name="button">Create User</button>
-                    </div>
+                <div class="uk-margin">
+                    <button class="uk-button uk-button-primary" type="submit" name="button">Create User</button>
+                </div>
 
-                </form>
-
-            </div>
+            </form>
 
         </div>
+
+    </div>
+    <div class="uk-container uk-container-center m-t-10">
     </div>
 @endsection
 

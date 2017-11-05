@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Validation\Rule;
+use Session;
 
 class UserController extends Controller
 {
@@ -13,7 +15,8 @@ class UserController extends Controller
         if ($id != null) {
             return [
                 'name' => 'required|max:255',
-                'email' => 'required|email|unique:users,email,' . $id,
+                'email' => 'required|email|',
+                'email' => Rule::unique('users')->ignore($id)
             ];
         } else {
             return [
