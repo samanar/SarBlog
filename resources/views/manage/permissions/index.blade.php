@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('manage.permissions.partials.tab')
+
     <div class="uk-child-width-1-2@s m-t-10" uk-grid>
         <div class="">
             <h2><i class="fa fa-shield" aria-hidden="true"></i> Manage Permissions</h2>
@@ -47,5 +49,4 @@
         </table>
     </div>
     {{ $permissions->links() }}
-
 @endsection

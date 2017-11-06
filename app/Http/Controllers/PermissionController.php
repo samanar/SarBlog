@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Permission;
+use Session;
+use Illuminate\Validation\Rule;
 
 class PermissionController extends Controller
 {
@@ -13,7 +15,8 @@ class PermissionController extends Controller
         if ($id != null)
             return [
                 'display_name' => 'required|max:255',
-                'name' => 'required|max:255|alphadash|unique:permissions,name',
+                'name' => 'required|max:255|alphadash',
+                'name' => Rule::unique('permissions', 'name')->ignore($id),
                 'description' => 'sometimes|max:255'
             ];
         else
@@ -68,7 +71,6 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         if ($request->permission_type == 'basic') {
             $this->validate($request, $this->basic_rules());
             $permission = new Permission();
@@ -82,7 +84,7 @@ class PermissionController extends Controller
             return redirect()->route('permissions.index');
         } else if ($request->permission_type == 'crud') {
             $this->validate($request, $this->crud_rules());
-            $crud = explode(',', $request->crud);
+            $crud = $request->crud;
             if (count($crud) > 0) {
                 foreach ($crud as $x) {
                     $slug = strtolower($x) . '-' . strtolower($request->resource);
@@ -140,7 +142,18 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        $this->validate($request, $this->basic_rules($id));
+        $permission = Permission::find($id);
+        $permission->name = $request->name;
+        $permission->display_name = $request->display_name;
+        $permission->description = $request->description;
+
+        if ($permission->save()) {
+            return redirect()->route('permissions.show', $id);
+        } else {
+            Session::flash('error', 'error while editing permission');
+            return redirect()->route('permissions.edit', $id);
+        }
     }
 
     /**
@@ -151,6 +164,6 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Permission::delete($id);
     }
 }

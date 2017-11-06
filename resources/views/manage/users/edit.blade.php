@@ -7,8 +7,8 @@
             <div class="uk-width-1-1@s uk-align-center register_form">
 
                 <h3>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    Create New User
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    Edit User
                 </h3>
 
                 <form class="uk-form-stacked uk-width-5-6@s" role="form" method="POST"
