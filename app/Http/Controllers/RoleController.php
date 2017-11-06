@@ -50,7 +50,10 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::find($id);
+        return view('manage.roles.show')
+            ->withClass("roles")
+            ->withRole($role);
     }
 
     /**

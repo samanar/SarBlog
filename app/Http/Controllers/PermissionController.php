@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Permission;
+use App\Role;
 use Session;
 use Illuminate\Validation\Rule;
 
@@ -39,6 +40,16 @@ class PermissionController extends Controller
             ];
     }
 
+    public function permission_role()
+    {
+        $roles = Role::all();
+        $permissions = Permission::paginate(10);
+        return view('manage.permission_role.index')
+            ->withRoles($roles)
+            ->withPermissions($permissions)
+            ->withClass('permissions');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +59,7 @@ class PermissionController extends Controller
     {
         $permissions = Permission::paginate(10);
         return view("manage.permissions.index")
-            ->withClass("rules")
+            ->withClass("permissions")
             ->withPermissions($permissions);
     }
 
@@ -60,7 +71,7 @@ class PermissionController extends Controller
     public function create()
     {
         return view("manage.permissions.create")
-            ->withClass("rules");
+            ->withClass("permissions");
     }
 
     /**
@@ -115,7 +126,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::findOrFail($id);
         return view("manage.permissions.show")
-            ->withClass("rules")
+            ->withClass("permissions")
             ->withPermission($permission);
     }
 
@@ -129,7 +140,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::findOrFail($id);
         return view("manage.permissions.edit")
-            ->withClass("rules")
+            ->withClass("permissions")
             ->withPermission($permission);
     }
 

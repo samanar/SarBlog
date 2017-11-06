@@ -17,7 +17,8 @@
                 Administrator
             </a>
         </li>
-        <li class="uk-parent @if(isset($class) && $class == "users" || $class == "rules") uk-active @endif">
+        <li class="uk-parent @if(isset($class) && ($class == "users" || $class == "roles" || $class == "permissions"))
+                uk-active @endif">
             <a href="#">
                 <i class="fa fa-users" aria-hidden="true"></i>
                 Users
@@ -35,12 +36,12 @@
                 </li>
                 <li>
                     <a
-                            @if(isset($class) && $class == "rules")
+                            @if(isset($class) && ($class == "roles" || $class == "permissions"))
                             style="color : black;"
                             @endif
-                            href="{{ route("permissions.index") }}">
+                            href="{{ route("permission_role") }}">
                         <i class="fa fa-shield" aria-hidden="true"></i>
-                        Rules &amp; Permissions
+                        Roles &amp; Permissions
                     </a>
                 </li>
             </ul>
