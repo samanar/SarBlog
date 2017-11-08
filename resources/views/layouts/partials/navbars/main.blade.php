@@ -15,9 +15,10 @@
 
     @guest
         <div class="uk-navbar-right">
-            <div class="uk-hidden@s uk-navbar-toggle" uk-navbar-toggle-icon type="button"
+            <div class="uk-hidden@s uk-navbar-toggle"  type="button"
                  uk-toggle="target: #offcanvas-nav-default">
             </div>
+
             <div class="uk-navbar-nav">
                 <li class="uk-visible@s"><a href="{{ route('login') }}" class="uk-navbar-item">
                         Login
