@@ -21,10 +21,11 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|edito
     ->group(function () {
         Route::get('/', 'ManageController@index')->name('manage.index');
         Route::get("/dashboard", 'ManageController@dashboard')->name("manage.dashboard");
-        Route::get('permission_roles' , 'PermissionController@permission_role')->name('permission_role');
+        Route::get('permission_roles' , 'ManageController@permission_role')->name('permission_role');
         Route::resource('/users', 'UserController');
         Route::resource("/permissions", 'PermissionController' );
         Route::resource('/roles', 'RoleController');
+        Route::resource('/posts', 'PostController');
     });
 
 Route::get('/home', 'HomeController@index')->name('home');

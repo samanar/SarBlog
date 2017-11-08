@@ -29,7 +29,7 @@
                             @if(isset($class) && $class == "create_posts")
                             style="color : black;"
                             @endif
-                            href="{{ route("users.index") }}">
+                            href="{{ route("posts.create") }}">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                         Create New Post
                     </a>
@@ -39,7 +39,7 @@
                             @if(isset($class) && $class == "list_posts")
                             style="color : black;"
                             @endif
-                            href="{{ route("permission_role") }}">
+                            href="{{ route("posts.index") }}">
                         <i class="fa fa-list" aria-hidden="true"></i>
                         Manage Posts
                     </a>

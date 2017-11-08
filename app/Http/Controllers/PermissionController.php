@@ -40,15 +40,6 @@ class PermissionController extends Controller
             ];
     }
 
-    public function permission_role()
-    {
-        $roles = Role::all();
-        $permissions = Permission::paginate(10);
-        return view('manage.permission_role.index')
-            ->withRoles($roles)
-            ->withPermissions($permissions)
-            ->withClass('permissions');
-    }
 
     /**
      * Display a listing of the resource.

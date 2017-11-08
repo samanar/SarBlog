@@ -3464,6 +3464,10 @@
   background-color: white;
 }
 
+textarea {
+  resize: none;
+}
+
 html {
   background-color: whitesmoke;
 }
