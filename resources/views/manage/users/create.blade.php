@@ -13,53 +13,70 @@
             <form class="uk-form-stacked uk-width-5-6@s" role="form" method="POST" action="{{ route('users.store') }}">
 
                 {{ csrf_field() }}
+                <div class="uk-grid uk-grid-divider" uk-grid>
+                    <div class="uk-width-2-3@s">
+                        <div>
+                            <label class="uk-form-label">Name</label>
+                            <input id="name" type="text"
+                                   class="uk-input{{ $errors->has('name') ? ' uk-form-danger' : '' }}" name="name"
+                                   value="{{ old('name') }}" required autofocus>
 
-                <div>
-                    <label class="uk-form-label">Name</label>
-                    <input id="name" type="text"
-                           class="uk-input{{ $errors->has('name') ? ' uk-form-danger' : '' }}" name="name"
-                           value="{{ old('name') }}" required autofocus>
-
-                    @if ($errors->has('name'))
-                        <div class="uk-alert-danger" uk-alert>
-                            {{ $errors->first('name') }}
+                            @if ($errors->has('name'))
+                                <div class="uk-alert-danger" uk-alert>
+                                    {{ $errors->first('name') }}
+                                </div>
+                            @endif
                         </div>
-                    @endif
-                </div>
 
-                <div class="uk-margin">
-                    <label class="uk-form-label">Email Address</label>
-                    <input id="email" type="email"
-                           class="uk-input{{ $errors->has('email') ? ' uk-form-danger' : '' }}" name="email"
-                           value="{{ old('email') }}"
-                           v-model="email"
-                           required>
+                        <div class="uk-margin">
+                            <label class="uk-form-label">Email Address</label>
+                            <input id="email" type="email"
+                                   class="uk-input{{ $errors->has('email') ? ' uk-form-danger' : '' }}" name="email"
+                                   value="{{ old('email') }}"
+                                   v-model="email"
+                                   required>
 
-                    @if ($errors->has('email'))
-                        <div class="uk-alert-danger" uk-alert>
-                            {{ $errors->first('email') }}
+                            @if ($errors->has('email'))
+                                <div class="uk-alert-danger" uk-alert>
+                                    {{ $errors->first('email') }}
+                                </div>
+                            @endif
                         </div>
-                    @endif
-                </div>
 
-                <div class="uk-margin">
-                    <label class="uk-form-label">Password</label>
-                    <input type="text" name="password" id="password"
-                           v-model="password"
-                           class="uk-input{{ $errors->has('password') ? ' uk-form-danger' : '' }}"
-                           required>
+                        <div class="uk-margin">
+                            <label class="uk-form-label">Password</label>
+                            <input type="text" name="password" id="password"
+                                   v-model="password"
+                                   class="uk-input{{ $errors->has('password') ? ' uk-form-danger' : '' }}"
+                                   required>
 
-                    @if ($errors->has('password'))
-                        <div class="uk-alert-danger" uk-alert>
-                            {{ $errors->first('password') }}
+                            @if ($errors->has('password'))
+                                <div class="uk-alert-danger" uk-alert>
+                                    {{ $errors->first('password') }}
+                                </div>
+                            @endif
                         </div>
-                    @endif
-                </div>
 
-                <div class="uk-margin">
-                    <input class="uk-checkbox" type="checkbox" name="auto_generate"
-                           v-model="auto_password">
-                    Auto generate password ?
+                        <div class="uk-margin">
+                            <input class="uk-checkbox" type="checkbox" name="auto_generate"
+                                   v-model="auto_password">
+                            Auto generate password ?
+                        </div>
+                    </div>
+                    <div class="uk-width-1-3@s">
+                        <div class="uk-margin">
+                            <h3>Roles</h3>
+                            <ul class="uk-grid uk-child-width-1-1@s">
+                                @foreach($roles as $role)
+                                    <label for="">
+                                        <input type="checkbox" class="uk-checkbox" name="roles[]"
+                                               value="{{ $role->id }}">
+                                        {{ $role->display_name }}
+                                    </label>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="uk-margin">

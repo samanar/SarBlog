@@ -6,8 +6,17 @@
             <div class="">
                 <h2>
                     <i class="fa fa-shield" aria-hidden="true"></i>
-                    Permission Details
+                    Role Details
                 </h2>
+            </div>
+            <div>
+                <div class="p-r-30">
+                    <a href="{{ route("roles.edit" , $role->id) }}"
+                       class="uk-button uk-button-secondary uk-align-right@s">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        Edit role
+                    </a>
+                </div>
             </div>
         </div>
         <hr>
@@ -16,27 +25,33 @@
                 Name :
             </div>
             <div class="uk-width-3-4@s">
-                {{ $permission->name }}
+                {{ $role->name }}
             </div>
             <div class="uk-width-1-4@s">
                 Display Name :
             </div>
             <div class="uk-width-3-4@s">
-                {{ $permission->display_name }}
+                {{ $role->display_name }}
             </div>
             <div class="uk-width-1-4@s">
                 Description :
             </div>
             <div class="uk-width-3-4@s">
-                {{ $permission->description }}
+                {{ $role->description }}
             </div>
             <div class="uk-width-1-4@s">
                 Created At :
             </div>
             <div class="uk-width-3-4@s">
-                {{ $permission->created_at->toFormattedDateString() }}
+                {{ $role->created_at->toFormattedDateString() }}
             </div>
         </div>
+        <h3>Permissions</h3>
+        <ul class="uk-list uk-list-bullet">
+            @foreach($role->permissions as $permission)
+                <li>{{ $permission->display_name }} ( {{ $permission->description }} )</li>
+            @endforeach
+        </ul>
     </div>
 
 @endsection

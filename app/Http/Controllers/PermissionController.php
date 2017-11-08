@@ -58,7 +58,7 @@ class PermissionController extends Controller
     public function index()
     {
         $permissions = Permission::paginate(10);
-        return view("manage.permissions.index")
+        return view("permission_role")
             ->withClass("permissions")
             ->withPermissions($permissions);
     }
@@ -92,7 +92,7 @@ class PermissionController extends Controller
 
 
             Session::flash('success', 'Permission has been successfully added');
-            return redirect()->route('permissions.index');
+            return redirect()->route('permission_role');
         } else if ($request->permission_type == 'crud') {
             $this->validate($request, $this->crud_rules());
             $crud = $request->crud;
@@ -109,7 +109,7 @@ class PermissionController extends Controller
                     $permission->save();
                 }
                 Session::flash('success', 'Permissions were all successfully added');
-                return redirect()->route('permissions.index');
+                return redirect()->route('permission_role');
             }
         } else {
             return redirect()->route('permissions.create')->withInput();

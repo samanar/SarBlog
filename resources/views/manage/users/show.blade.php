@@ -44,6 +44,19 @@
                 {{ $user->created_at->diffForHumans() }}
             </div>
         </div>
+
+        <h3>Roles</h3>
+
+        @if( count($user->roles) != 0 )
+            <ul class="uk-list uk-list-bullet">
+                @foreach($user->roles as $role)
+                    <li>{{ $role->display_name }}</li>
+                @endforeach
+            </ul>
+
+        @else
+            <div class="uk-text-danger">This user has no roles</div>
+        @endif
     </div>
 
 

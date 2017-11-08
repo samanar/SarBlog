@@ -21,19 +21,25 @@
                             <div class="uk-text-meta uk-text-primary">{{ $value->name }}</div>
                         </h3>
                     </div>
-                        <p>
-                            Description : {{ str_limit($value->description , 70) }}
-                            <br>
-                            <br>
-                            <a class="uk-button uk-button-default uk-button-small"
-                               href="{{ route("roles.show" , $value->id) }}">details</a>
-                            <a class="uk-button uk-button-primary uk-button-small"
-                               href="{{ route("roles.edit" , $value->id) }}">Edit</a>
-                        </p>
+                    <p>
+                        Description : {{ str_limit($value->description , 70) }}
+                        <br>
+                        <br>
+                        <a class="uk-button uk-button-default uk-button-small"
+                           href="{{ route("roles.show" , $value->id) }}">details</a>
+                        <a class="uk-button uk-button-primary uk-button-small"
+                           href="{{ route("roles.edit" , $value->id) }}">Edit</a>
+                    </p>
                 </div>
                 <div class="uk-padding uk-column-1-2">
                     <ul class="uk-list uk-list-bullet ">
-
+                        @foreach($value->permissions as $key2 => $value2)
+                            @if($key2 >= 5)
+                                <li> ... </li>
+                                @break
+                            @endif
+                            <li>{{ $value2->name }}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

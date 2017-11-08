@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use Illuminate\Validation\Rule;
 use Session;
+use App\User;
+use App\Role;
 
 class UserController extends Controller
 {
@@ -48,7 +49,10 @@ class UserController extends Controller
     public
     function create()
     {
-        return view("manage.users.create")->withClass("users");
+        $roles = Role::all();
+        return view("manage.users.create")
+            ->withRoles($roles)
+            ->withClass("users");
     }
 
     /**
@@ -68,11 +72,14 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        if ($user->save()) {
+
+        $user->save();
+
+        if ($user->roles()->sync($request->roles)) {
             return redirect()->route("users.show", $user->id);
         } else {
-            Session::flash("error", "error occured while adding new user ");
-            return redirect()->route("users.index");
+            Session::flash("error", "error occured when editing user info");
+            return redirect()->route("users.edit", $user->id);
         }
     }
 
@@ -85,7 +92,7 @@ class UserController extends Controller
     public
     function show($id)
     {
-        $user = User::find($id);
+        $user = User::with("roles")->where('id', $id)->first();
         return view("manage.users.show")
             ->withUser($user)
             ->withClass("users");
@@ -100,9 +107,11 @@ class UserController extends Controller
     public
     function edit($id)
     {
-        $user = User::find($id);
+        $user = User::with("roles")->where('id', $id)->first();
+        $roles = Role::all();
         return view("manage.users.edit")
             ->withUser($user)
+            ->withRoles($roles)
             ->withClass("users");
     }
 
@@ -123,7 +132,10 @@ class UserController extends Controller
         if (isset($request->password) && !empty($request->password)) {
             $user->password = bcrypt($request->password);
         }
-        if ($user->save()) {
+
+        $user->save();
+
+        if ($user->roles()->sync($request->roles)) {
             return redirect()->route("users.show", $id);
         } else {
             Session::flash("error", "error occured when editing user info");
@@ -143,3 +155,4 @@ class UserController extends Controller
         //
     }
 }
+
